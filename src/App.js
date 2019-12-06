@@ -2,9 +2,21 @@ import React from "react";
 import "./App.css";
 import AddTodo from "./AddTodo";
 import TodoList from "./TodoList";
-import { addTodo, toggleTodo, removeTodo } from "./todoActions";
+import {
+  addTodo,
+  toggleTodo,
+  removeTodo,
+  setVisibilityFilter
+} from "./todoActions";
 import { connect } from "react-redux";
-function App({ todoList, filter, onStatusToggle, onRemoveTodo, onAddTodo }) {
+function App({
+  todoList,
+  filter,
+  onStatusToggle,
+  onRemoveTodo,
+  onAddTodo,
+  onFilterChange
+}) {
   return (
     <>
       <TodoList
@@ -14,6 +26,11 @@ function App({ todoList, filter, onStatusToggle, onRemoveTodo, onAddTodo }) {
         onRemoveTodo={onRemoveTodo}
       />
       <AddTodo onAdd={onAddTodo} />
+      <select onChange={e => onFilterChange(e.target.value)}>
+        <option value={"All"}>All</option>
+        <option value={true}>Completed</option>
+        <option value={false}>Incomplete</option>
+      </select>
     </>
   );
 }
@@ -33,6 +50,9 @@ function mapDispatchToProps(dispatch) {
     },
     onAddTodo(todo, id = Date.now()) {
       dispatch(addTodo(todo, id));
+    },
+    onFilterChange(filter) {
+      dispatch(setVisibilityFilter(filter));
     }
   };
 }

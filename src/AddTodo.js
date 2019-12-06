@@ -12,7 +12,7 @@ const AddTodo = ({ onAdd }) => {
         name="todo"
         onKeyPress={e => {
           if (todo !== "" && e.key === "Enter") {
-            onAdd(todo, e);
+            onAdd(todo);
             setTodo("");
           }
         }}
@@ -20,7 +20,7 @@ const AddTodo = ({ onAdd }) => {
       <button
         disabled={todo === ""}
         onClick={e => {
-          onAdd(todo, e);
+          onAdd(todo);
           setTodo("");
         }}
       >

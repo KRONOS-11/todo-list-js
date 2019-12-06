@@ -1,7 +1,7 @@
 import React from "react";
 
 const Todo = ({ todo, status, onStatusToggle, id, onRemoveTodo }) => (
-  <div className="todo" id={id}>
+  <div className="todo">
     <label>
       <input
         type="checkbox"

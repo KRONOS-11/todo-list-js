@@ -7,7 +7,9 @@ import {
   UPDATE_TODO
 } from "./todoActions";
 const todos = (
-  state = [{ todo: "this is sample", status: false, id: Date.now() }],
+  state = JSON.parse(
+    localStorage.getItem("todos") || JSON.stringify({ data: [] })
+  ).data,
   action
 ) => {
   switch (action.type) {

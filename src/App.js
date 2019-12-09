@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import AddTodo from "./AddTodo";
 import TodoList from "./TodoList";
@@ -19,6 +19,9 @@ function App({
   onFilterChange,
   onUpdateTodo
 }) {
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify({ data: todoList }));
+  }, [todoList]);
   return (
     <>
       <TodoList

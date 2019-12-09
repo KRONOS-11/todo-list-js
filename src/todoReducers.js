@@ -3,7 +3,8 @@ import {
   ADD_TODO,
   TOGGLE_TODO,
   REMOVE_TODO,
-  SET_VISIBILITY_FILTER
+  SET_VISIBILITY_FILTER,
+  UPDATE_TODO
 } from "./todoActions";
 const todos = (
   state = [{ todo: "this is sample", status: false, id: Date.now() }],
@@ -11,7 +12,6 @@ const todos = (
 ) => {
   switch (action.type) {
     case ADD_TODO:
-      console.log(action);
       return [
         ...state,
         {
@@ -20,6 +20,16 @@ const todos = (
           status: false
         }
       ];
+    case UPDATE_TODO:
+      return state.map(todo => {
+        if (todo.id !== action.id) {
+          return todo;
+        }
+        return {
+          ...todo,
+          todo: action.todo
+        };
+      });
     case TOGGLE_TODO:
       return state.map(todo => {
         if (todo.id !== action.id) {

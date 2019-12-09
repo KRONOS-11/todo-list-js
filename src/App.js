@@ -6,7 +6,8 @@ import {
   addTodo,
   toggleTodo,
   removeTodo,
-  setVisibilityFilter
+  setVisibilityFilter,
+  updateTodo
 } from "./todoActions";
 import { connect } from "react-redux";
 function App({
@@ -15,7 +16,8 @@ function App({
   onStatusToggle,
   onRemoveTodo,
   onAddTodo,
-  onFilterChange
+  onFilterChange,
+  onUpdateTodo
 }) {
   return (
     <>
@@ -24,6 +26,7 @@ function App({
         filter={filter}
         onStatusToggle={onStatusToggle}
         onRemoveTodo={onRemoveTodo}
+        onUpdateTodo={onUpdateTodo}
       />
       <AddTodo onAdd={onAddTodo} />
       <select onChange={e => onFilterChange(e.target.value)}>
@@ -53,6 +56,9 @@ function mapDispatchToProps(dispatch) {
     },
     onFilterChange(filter) {
       dispatch(setVisibilityFilter(filter));
+    },
+    onUpdateTodo(id, todo) {
+      dispatch(updateTodo(id, todo));
     }
   };
 }

@@ -1,7 +1,13 @@
 import React from "react";
 import Todo from "./Todo";
 
-const TodoList = ({ todoList, filter, onStatusToggle, onRemoveTodo }) => (
+const TodoList = ({
+  todoList,
+  filter,
+  onStatusToggle,
+  onRemoveTodo,
+  onUpdateTodo
+}) => (
   <div className="TodoList">
     {todoList
       .filter(todo => filter === "All" || todo.status.toString() === filter)
@@ -11,6 +17,7 @@ const TodoList = ({ todoList, filter, onStatusToggle, onRemoveTodo }) => (
           {...todo}
           onRemoveTodo={onRemoveTodo}
           onStatusToggle={onStatusToggle}
+          onUpdateTodo={onUpdateTodo}
         />
       ))}
   </div>

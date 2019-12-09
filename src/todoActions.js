@@ -2,6 +2,7 @@ export const ADD_TODO = "ADD_TODO";
 export const TOGGLE_TODO = "TOGGLE_TODO";
 export const REMOVE_TODO = "REMOVE_TODO";
 export const SET_VISIBILITY_FILTER = "SET_VISIBILITY_FILTER";
+export const UPDATE_TODO = "UPDATE_TODO";
 
 export const addTodo = (todo, id) => {
   console.log("lol", id, todo);
@@ -16,3 +17,4 @@ export const setVisibilityFilter = filter => ({
   type: SET_VISIBILITY_FILTER,
   filter
 });
+export const updateTodo = (id, todo) => ({ type: UPDATE_TODO, id, todo });

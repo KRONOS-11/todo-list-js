@@ -1,0 +1,62 @@
+.todo .todo-delete {
+  opacity: 0;
+  cursor: pointer;
+  font-size: 30px;
+  color: #5c76e3;
+  margin-left: auto;
+  background: none;
+  border: 1px solid #5c76e3;
+  color: #5c76e3;
+  padding: 0;
+  line-height: 1;
+  width: 1em;
+  height: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 25px;
+}
+.todo {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  justify-content: space-evenly;
+}
+.todo .todo-detail {
+  text-decoration: none;
+  max-width: 20em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  position: relative;
+}
+.todo-detail::after {
+  content: "";
+  height: 1px;
+  transition: 0.5s;
+  position: absolute;
+  width: 0;
+  left: 0;
+  background: black;
+  top: 50%;
+}
+.todo-check:checked ~ .todo-detail::after {
+  width: 100%;
+  transition: 0.5s;
+  opacity: 1;
+}
+.todo-check:checked ~ .todo-detail {
+  opacity: 0.4;
+}
+
+.todo-delete:hover {
+  background-color: #5c76e3;
+  color: white;
+}
+.todo:hover .todo-delete {
+  opacity: 1;
+}
+.todo-check {
+  cursor: pointer;
+}

@@ -1,1 +1,50 @@
-
+@import url("https://fonts.googleapis.com/css?family=Montserrat:500&display=swap");
+* {
+  transition: all 0.2s;
+}
+#root {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: #5c76e3;
+  display: flex;
+  align-items: center;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+}
+.filter input[name="filter"] {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  opacity: 0;
+}
+.filter {
+  display: inline-flex;
+  min-width: 100%;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+.filter > label {
+  border: 0.5px solid #5c76e3;
+  padding: 10px;
+  border-radius: 2em;
+  cursor: pointer;
+  color: #5c76e3;
+  transition: 0.5s;
+}
+/* bad css  because depends on the dom structure*/
+.filter input:checked + label,
+.filter input:hover + label {
+  background-color: #5c76e3;
+  color: white;
+  transition: 0.5s;
+}
+.app {
+  min-width: 20%;
+  min-height: 20%;
+  background: #fefefe;
+  border-radius: 10px;
+  margin: auto;
+  padding: 10px;
+}

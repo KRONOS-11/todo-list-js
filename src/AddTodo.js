@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "./AddTodo.css";
 const AddTodo = ({ onAdd }) => {
   const [todo, setTodo] = useState("");
   return (
@@ -11,20 +11,21 @@ const AddTodo = ({ onAdd }) => {
         onChange={e => setTodo(e.target.value)}
         name="todo"
         onKeyPress={e => {
-          if (todo !== "" && e.key === "Enter") {
+          if (todo !== "" && e.key === "Enter" && !e.shiftKey) {
             onAdd(todo);
             setTodo("");
           }
         }}
       />
       <button
+        className="add-todo"
         disabled={todo === ""}
         onClick={e => {
           onAdd(todo);
           setTodo("");
         }}
       >
-        Add +
+        <span>Add</span>
       </button>
     </div>
   );

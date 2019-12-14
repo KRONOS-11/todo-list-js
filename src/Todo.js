@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-
+import "./Todo.css";
 const Todo = ({
   todo,
   status,
@@ -18,8 +18,17 @@ const Todo = ({
     },
     [id, onUpdateTodo]
   );
+  const onBlur = useCallback(
+    e => {
+      e.preventDefault();
+      onUpdateTodo(id, e.target.innerText);
+      e.target.toggleAttribute("contentEditable");
+    },
+    [id, onUpdateTodo]
+  );
   const onDblCk = useCallback(
     e => {
+      if (status === true) return;
       e.preventDefault();
       if (e.target.toggleAttribute("contentEditable")) {
         e.target.addEventListener("keydown", onEnter);
@@ -27,19 +36,23 @@ const Todo = ({
         e.target.removeEventListener("keydown", onEnter);
       }
     },
-    [onEnter]
+    [onEnter, status]
   );
 
   return (
     <div className="todo">
       <input
+        className="todo-check"
         type="checkbox"
-        checked={status}
-        onChange={e => onStatusToggle(id)}
+        defaultChecked={status}
+        onChange={e => setTimeout(() => onStatusToggle(id), 550)}
       />
-      <span onDoubleClick={onDblCk}>{todo}</span>{" "}
-      <span>: {status.toString()}</span>
-      <button onClick={e => onRemoveTodo(id)}>Remove</button>
+      <p className="todo-detail" onDoubleClick={onDblCk} onBlur={onBlur}>
+        {todo}
+      </p>{" "}
+      <button className="todo-delete" onClick={e => onRemoveTodo(id)}>
+        &#10008;
+      </button>
     </div>
   );
 };

@@ -23,7 +23,36 @@ function App({
     localStorage.setItem("todos", JSON.stringify({ data: todoList }));
   }, [todoList]);
   return (
-    <>
+    <div className="app">
+      <div class="filter">
+        <input
+          id="All"
+          type="radio"
+          checked={"All" === filter}
+          onChange={e => onFilterChange(e.target.value)}
+          value={"All"}
+          name="filter"
+        />
+        <label for="All">All</label>
+        <input
+          id="true"
+          type="radio"
+          checked={"true" === filter.toString()}
+          onChange={e => onFilterChange(e.target.value)}
+          value={true}
+          name="filter"
+        />
+        <label for="true">Completed</label>
+        <input
+          id="false"
+          type="radio"
+          checked={"false" === filter.toString()}
+          onChange={e => onFilterChange(e.target.value)}
+          value={false}
+          name="filter"
+        />
+        <label for="false">Incomplete</label>
+      </div>
       <TodoList
         todoList={todoList}
         filter={filter}
@@ -32,12 +61,7 @@ function App({
         onUpdateTodo={onUpdateTodo}
       />
       <AddTodo onAdd={onAddTodo} />
-      <select onChange={e => onFilterChange(e.target.value)}>
-        <option value={"All"}>All</option>
-        <option value={true}>Completed</option>
-        <option value={false}>Incomplete</option>
-      </select>
-    </>
+    </div>
   );
 }
 function mapStateToProps({ todos, visibilityFilter }) {

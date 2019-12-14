@@ -1,0 +1,45 @@
+.AddTodo {
+  display: flex;
+  justify-content: space-evenly;
+  height: 2em;
+}
+
+.AddTodo > input[name="todo"] {
+  width: 100%;
+  font-size: inherit;
+  margin: 0 0.5em;
+  border-radius: 2em;
+  padding: 0 1em;
+  background: none;
+  font-family: "Source Sans Pro", sans-serif;
+  border: 0.5px solid grey;
+  transition: border 250ms ease-out;
+}
+.AddTodo > input[name="todo"]:focus {
+  border: 0.5px solid #5c76e3;
+}
+
+.AddTodo > .add-todo {
+  font-size: 16px;
+  margin: 0 0.5em;
+  border-radius: 2em;
+  padding: 6px 10px;
+  cursor: pointer;
+  background: none;
+  letter-spacing: 1px;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #5c76e3;
+  border: #5c76e3 0.5px solid;
+  transition: 250ms ease-out;
+}
+.AddTodo > .add-todo:hover {
+  background: #5c76e3;
+  color: white;
+}
+
+.AddTodo > .add-todo:disabled {
+  opacity: 0.2 !important;
+  background: none !important;
+  color: initial !important;
+  cursor: not-allowed !important;
+}

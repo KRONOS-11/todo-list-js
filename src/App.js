@@ -61,6 +61,9 @@ function App({
         onUpdateTodo={onUpdateTodo}
       />
       <AddTodo onAdd={onAddTodo} />
+      <p style={{ textAlign: "center", fontSize: 14 }}>
+        Click on incomplete Todo Thrice to edit.
+      </p>
     </div>
   );
 }
